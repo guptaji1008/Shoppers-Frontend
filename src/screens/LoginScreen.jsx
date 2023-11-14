@@ -78,7 +78,7 @@ const LoginScreen = () => {
           </Form.Group>
           <Button type="submit" variant="primary" disabled={isLoading} className="mb-3">Login Me Now 😒</Button>
         </Form>
-        <div>New to Shopper's <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} >Register</Link> </div>
+        <div>New to Shopper&apos;s <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} >Register</Link> </div>
         <div className="d-flex justify-content-center mt-3"> {isLoading ? <Loader /> : null} </div>
       </FormContainer>
     </main>

@@ -35,7 +35,7 @@ const Header = () => {
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Shopper's</Navbar.Brand>
+            <Navbar.Brand>Shopper&apos;s</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
