@@ -13,6 +13,7 @@ import {
 import { FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../slices/cartSlice";
+import Meta from "../components/Meta";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const CartScreen = () => {
           </Message>
         ) : (
           <>
+          <Meta title="Cart" />
             <h2>Shopping Cart : </h2>
             <Row>
               <Col md={8} sm={12}>
@@ -73,7 +75,7 @@ const CartScreen = () => {
                           md={3}
                           sm={12}
                         >
-                          Price: &nbsp; <strong>${item.price}</strong>
+                          Price: &nbsp; <strong>₹{item.price}</strong>
                         </Col>
                         <Col
                           className="d-flex align-items-center justify-content-center mb-2"
@@ -132,7 +134,7 @@ const CartScreen = () => {
                       items
                     </h2>
                     <h5>
-                      Tot. Price: $
+                      Tot. Price: ₹
                       {cartItems
                         .reduce((a, c) => a + c.qty * c.price, 0)
                         .toFixed(2)}

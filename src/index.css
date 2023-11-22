@@ -54,7 +54,20 @@ main {
   color: black;
 }
 
-@media (prefers-color-scheme: light) {
+table td, table th {
+  text-align: center;
+}
+
+.carousel-caption {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -65,4 +78,4 @@ main {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

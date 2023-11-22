@@ -4,14 +4,15 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import { useLoginMutation } from '../slices/usersApiSlice.js'
+import { useRegisterMutation } from '../slices/usersApiSlice.js'
 import { setCredentials } from '../slices/authSlice.js'
 import { toast } from 'react-toastify'
 import Meta from "../components/Meta.jsx";
 
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   const [userLoginInfo, setUserLoginInfo] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -19,7 +20,7 @@ const LoginScreen = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [register, { isLoading }] = useRegisterMutation();
 
   const { userInfo } = useSelector((state) => state.auth)
 
@@ -36,7 +37,7 @@ const LoginScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await login(userLoginInfo).unwrap();
+      const res = await register(userLoginInfo).unwrap();
       dispatch(setCredentials({...res}))
       navigate(redirect)
     } catch (error) {
@@ -46,10 +47,24 @@ const LoginScreen = () => {
 
   return (
     <main>
-      <Meta title="Login to Shopper's" />
+      <Meta title="Register to Shopper's" />
       <FormContainer>
-        <h2>Login (We also hate paperwork😣)</h2>
+        <h2>Register (ufff, this paperwork!! 😣)</h2>
         <Form onSubmit={submitHandler}>
+          <Form.Group controlId="name" className="my-3">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="john@email.com"
+              value={userLoginInfo.name}
+              onChange={(e) =>
+                setUserLoginInfo({
+                  ...userLoginInfo,
+                  name: e.target.value,
+                })
+              }
+            />
+          </Form.Group>
           <Form.Group controlId="email" className="my-3">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -78,13 +93,13 @@ const LoginScreen = () => {
               }
             />
           </Form.Group>
-          <Button type="submit" variant="primary" disabled={isLoading} className="mb-3">Login Me Now 😒</Button>
+          <Button type="submit" variant="primary" disabled={isLoading} className="mb-3">Wasted my time 😒, Register now</Button>
         </Form>
-        <div>New to Shopper&apos;s <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} >Register</Link> </div>
+        <div>Already on Shopper&apos;s <Link to={redirect ? `/login?redirect=${redirect}` : '/register'} >Login</Link> </div>
         <div className="d-flex justify-content-center mt-3"> {isLoading ? <Loader /> : null} </div>
       </FormContainer>
     </main>
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;

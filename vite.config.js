@@ -16,8 +16,8 @@ export default defineConfig({
   server: {
     // proxy requests prefixed '/api' and '/uploads'
     proxy: {
-      '/api': 'http://localhost:8000',
-      '/uploads': 'http://localhost:8000',
+      '/api': 'https://e-commerce-backend-5wox.onrender.com',
+      '/uploads': 'https://e-commerce-backend-5wox.onrender.com',
     },
   },
 })

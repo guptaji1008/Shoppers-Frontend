@@ -6,11 +6,17 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store.js'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
+import { HelmetProvider } from 'react-helmet-async'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
+  <HelmetProvider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <PayPalScriptProvider deferLoading={true}>
+          <App />
+        </PayPalScriptProvider>
+      </Provider>
+    </BrowserRouter>
+  </HelmetProvider>
 )
