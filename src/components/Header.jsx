@@ -25,7 +25,7 @@ const Header = () => {
   const logoutHandler = async () => {
     try {
       const res = await logoutApiCall().unwrap();
-      toast.success(res.message)
+      toast.success(res?.data?.message)
       dispatch(logout());
       navigate("/login");
     } catch (error) {
