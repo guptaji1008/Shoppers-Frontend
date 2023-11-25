@@ -11,6 +11,7 @@ import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import SearchBox from "./SearchBox";
 import Loader from "./Loader";
+import { toast } from "react-toastify"
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
