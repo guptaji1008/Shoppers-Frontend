@@ -10,6 +10,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import SearchBox from "./SearchBox";
+import Loader from "./Loader";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -18,11 +19,12 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [logoutApiCall] = useLogoutMutation();
+  const [logoutApiCall, { isLoading: isLoggingOut }] = useLogoutMutation();
 
   const logoutHandler = async () => {
     try {
-      await logoutApiCall().unwrap();
+      const res = await logoutApiCall().unwrap();
+      toast.success(res.data.message)
       dispatch(logout());
       navigate("/login");
     } catch (error) {
@@ -31,7 +33,8 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <>
+      <header>
       {/* creating navbar using bootstrap component */}
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container>
@@ -89,6 +92,8 @@ const Header = () => {
         </Container>
       </Navbar>
     </header>
+    {isLoggingOut && <Loader />}
+    </>
   );
 };
 
