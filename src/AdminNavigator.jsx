@@ -16,6 +16,7 @@ import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 const AdminNavigator = () => {
   return (
@@ -32,6 +33,7 @@ const AdminNavigator = () => {
         <Route path="/orders/:id" element={<OrderScreen />} />
         <Route path="/product/:id" element={<ProductScreen />} />
         <Route path="/cart" element={<CartScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
         <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
         <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
         <Route path="/shipping" element={<ShippingScreen />} />

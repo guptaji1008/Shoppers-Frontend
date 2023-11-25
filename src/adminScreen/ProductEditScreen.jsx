@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
@@ -46,7 +46,7 @@ const ProductEditScreen = () => {
         ...productInfo,
         name,
         price,
-        image,
+        image: image.url,
         brand,
         category,
         countInStock,
@@ -74,11 +74,12 @@ const ProductEditScreen = () => {
 
   const uploadFileHandler = async (e) => {
     const formData = new FormData()
-    formData.append('image', e.target.files[0]);
+    formData.append('productImage', e.target.files[0]);
     try {
-        const res = await uploadProductImage(formData).unwrap();
+        const res = await uploadProductImage({ formData, _id: productId }).unwrap();
         toast.success(res.message)
-        setProductInfo({...productInfo, image: res.image})
+        setProductInfo({...productInfo, image: res.image.url})
+        refetch()
     } catch (error) {
         console.log(error)
         toast.error(error?.data || error.error);
@@ -96,6 +97,7 @@ const ProductEditScreen = () => {
         <FormContainer>
           <h2>Edit Product</h2>
           {loadingUpdate && <Loader />}
+          {loadingUpload && <Loader />}
           {isLoading ? (
             <Loader />
           ) : error ? (

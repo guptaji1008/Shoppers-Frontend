@@ -1,7 +1,6 @@
-import React from "react";
-import { Container, Table, Button, Row, Col } from "react-bootstrap";
+import { Container, Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { FaTimes, FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { useGetAllProductsQuery, useCreateProductMutation, useDeleteProductMutation } from "../slices/productApiSlice";

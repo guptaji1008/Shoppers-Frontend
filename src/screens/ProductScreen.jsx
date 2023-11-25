@@ -134,7 +134,7 @@ const ProductScreen = () => {
           <Meta title={product.name} />
             <Row>
               <Col md={5} sm={12} className="md:mb-0 mb-4">
-                <Image src={product.image} fluid />
+                <Image src={product.image.url} fluid />
               </Col>
               <Col md={4} sm={12} className="md:mb-0 mb-4">
                 <ListGroup variant="flush">
@@ -275,7 +275,7 @@ const ProductScreen = () => {
                                 <option value="2">2 - Fair</option>
                                 <option value="3">3 - Good</option>
                                 <option value="4">4- Very Good</option>
-                                <option value="5">5- Excellent</option>
+                                <option value="5">5 - Excellent</option>
                               </Form.Control>
                             </Form.Group>
                             <Form.Group controlId="comment" className="my-2">

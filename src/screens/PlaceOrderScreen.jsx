@@ -36,6 +36,7 @@ const PlaceOrderScreen = () => {
             orderItems: cartItems,
             itemsPrice, shippingAddress, paymentMethod, shippingPrice, taxPrice, totalPrice
         })
+        console.log(res)
         dispatch(clearCartItems())
         if (!error) navigate(`/orders/${res.data._id}`)
     } catch (error) {
@@ -80,7 +81,7 @@ const PlaceOrderScreen = () => {
                       <Row>
                         <Col md={2} sm={12} className="mb-2">
                           <Image
-                            src={item.image}
+                            src={item.image.url}
                             alt={item.name}
                             fluid
                             rounded

@@ -49,7 +49,7 @@ const HomeScreen = () => {
                   <Col
                     key={product._id}
                     className="py-3"
-                    sm={10}
+                    sm={12}
                     md={6}
                     lg={4}
                     xl={3}

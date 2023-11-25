@@ -7,6 +7,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
       query: ({ pageNo, keyword }) => ({
         url: PRODUCTS_URL,
         params: { pageNo, keyword },
+        
       }),
       providesTags: ["Products"],
       keepUnusedDataFor: 5,
@@ -40,9 +41,9 @@ export const productApiSlice = apiSlice.injectEndpoints({
     }),
     uploadProductImage: builder.mutation({
       query: (data) => ({
-        url: UPLOAD_URL,
-        method: "POST",
-        body: data,
+        url: `${PRODUCTS_URL}/${data._id}/image`,
+        method: "PUT",
+        body: data.formData,
       }),
     }),
     deleteProduct: builder.mutation({

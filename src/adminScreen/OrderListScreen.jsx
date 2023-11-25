@@ -1,5 +1,4 @@
-import React from "react";
-import { Container, Table, Button } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import { FaTimes } from "react-icons/fa";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
