@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseQuery = fetchBaseQuery({ baseUrl: "" })
+const baseQuery = fetchBaseQuery({ baseUrl: "https://ecommerce-backend-8pl4.onrender.com" })
 
 export const apiSlice = createApi({
     baseQuery,
