@@ -79,7 +79,6 @@ const ProductEditScreen = () => {
         const res = await uploadProductImage({ formData, _id: productId }).unwrap();
         toast.success(res.message)
         setProductInfo({...productInfo, image: res.image.url})
-        refetch()
     } catch (error) {
         console.log(error)
         toast.error(error?.data || error.error);

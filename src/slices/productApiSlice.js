@@ -1,4 +1,4 @@
-import { PRODUCTS_URL, UPLOAD_URL } from "../constant.js";
+import { PRODUCTS_URL } from "../constant.js";
 import { apiSlice } from "./apiSlice.js";
 
 export const productApiSlice = apiSlice.injectEndpoints({
@@ -15,6 +15,8 @@ export const productApiSlice = apiSlice.injectEndpoints({
     getAllProducts: builder.query({
       query: () => ({
         url: `${PRODUCTS_URL}/allproducts`,
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
       }),
       providesTags: ["Products"],
       keepUnusedDataFor: 5,
@@ -27,6 +29,8 @@ export const productApiSlice = apiSlice.injectEndpoints({
     createProduct: builder.mutation({
       query: () => ({
         url: PRODUCTS_URL,
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         method: "POST",
       }),
       invalidatesTags: ["Product"],
@@ -34,6 +38,8 @@ export const productApiSlice = apiSlice.injectEndpoints({
     updateProduct: builder.mutation({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data._id}`,
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         method: "PUT",
         body: data,
       }),
@@ -42,6 +48,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
     uploadProductImage: builder.mutation({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data._id}/image`,
+        credentials: "include",
         method: "PUT",
         body: data.formData,
       }),
@@ -49,12 +56,16 @@ export const productApiSlice = apiSlice.injectEndpoints({
     deleteProduct: builder.mutation({
       query: (productId) => ({
         url: `${PRODUCTS_URL}/${productId}`,
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         method: "DELETE",
       }),
     }),
     createReview: builder.mutation({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data._id}/reviews`,
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         method: 'POST',
         body: data
       }),
@@ -63,6 +74,8 @@ export const productApiSlice = apiSlice.injectEndpoints({
     updateReview: builder.mutation({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data._id}/reviews`,
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         method: 'PUT',
         body: data
       }),
@@ -71,6 +84,8 @@ export const productApiSlice = apiSlice.injectEndpoints({
     deleteReview: builder.mutation({
       query: (productId) => ({
         url: `${PRODUCTS_URL}/${productId}/reviews`,
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         method: 'DELETE',
       }),
     }),
