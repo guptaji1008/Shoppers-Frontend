@@ -1,6 +1,6 @@
 # Shopper's eCommerce Platform
 
-<img src="/images/screenshot 1.png">
+<img src="/public/images/screenshot 1.png">
 
 This project is a full-featured shopping cart with PayPal & credit/debit payments. See it in action at https://shopisz.netlify.app
 
