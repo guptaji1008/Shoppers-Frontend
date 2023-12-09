@@ -178,7 +178,7 @@ const OrderScreen = () => {
                           <Row>
                             <Col md={2} sm={12} className="mb-2">
                               <Image
-                                src={item.image}
+                                src={item.image.url}
                                 alt={item.name}
                                 fluid
                                 rounded
@@ -238,13 +238,6 @@ const OrderScreen = () => {
                           <Loader />
                         ) : (
                           <div>
-                            <Button
-                              onClick={onApproveTest}
-                              variant="dark"
-                              className="my-3"
-                            >
-                              Test Pay Order
-                            </Button>
                             <div>
                               <PayPalButtons
                                 createOrder={createOrder}
